@@ -7,20 +7,16 @@ describe('Serverless Functions ', () => {
     expect(status).toEqual(200);
   });
 
-  test('Create User Function -> Should return status code 200 and json with data', async () => {
-    const typeResponse = {
-      status: 'ok',
-    };
-
+  test('Create User Function -> Should return status code 201 and create a new user', async () => {
     const req = await fetch('http://localhost:3000/users/create', {
       method: 'POST',
       body: JSON.stringify({
         name: 'arison',
-        username: 'arisonreisss',
+        username: 'arisonreiss',
       }),
     });
-    const res = await req.json();
+    const res = req.status;
 
-    expect(res).toEqual(typeResponse);
+    expect(res).toBe(201);
   });
 });
